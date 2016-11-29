@@ -1,0 +1,11 @@
+@import "addons.scss";
+@import "vchess.scss";
+
+@include font(Chess-Leipzig, '../../../../../themes/vchess/fonts/Chess-Leipzig/Chess-Leipzig');
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in vchess.scss */
+.vchess {
+  @include addons;
+  @include vchess;
+
+}

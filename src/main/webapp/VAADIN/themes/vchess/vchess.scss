@@ -1,0 +1,23 @@
+@import "../valo/valo.scss";
+
+@mixin vchess {
+  @include valo;
+
+  /* Add your theme selectors here */
+  .blacksquare {
+    background-color: #b8860b;
+    border: solid black 1px;
+    text-align: center;
+  }
+  .whitesquare {
+    background-color: #dcdcdc;
+    border: solid black 1px;
+    text-align: center;
+  }
+  .v-label-boardpiece {
+    position: relative;
+    text-align: center;
+    top: -18px;
+    font-family: Chess-Leipzig;
+  }
+}
