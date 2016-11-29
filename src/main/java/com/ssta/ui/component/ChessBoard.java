@@ -1,8 +1,7 @@
 package com.ssta.ui.component;
 
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.*;
-import com.vaadin.ui.themes.ValoTheme;
-import org.vaadin.viritin.label.MLabel;
 import org.vaadin.viritin.layouts.MHorizontalLayout;
 
 import java.util.Arrays;
@@ -27,8 +26,8 @@ public class ChessBoard extends CustomComponent {
     System.out.println("got call with boardstate: " + fen);
     state = parseFen(fen);
     layout = new GridLayout(8, 8);
-    layout.setWidth(320, Unit.PIXELS);
-    layout.setHeight(320, Unit.PIXELS);
+    layout.setWidth(400, Unit.PIXELS);
+    layout.setHeight(400, Unit.PIXELS);
 
     for (int i = 0; i < state.board.length; i++) {
       int[] pos = arrayIndexToGridIndex(i);
@@ -58,17 +57,22 @@ public class ChessBoard extends CustomComponent {
 
   private Component mkSquare(char p) {
     Piece piece = Piece.find(p);
-    Label f = new MLabel(String.valueOf(piece.getUnicode()))
-        .withStyleName(ValoTheme.LABEL_H1, "boardpiece");
-    HorizontalLayout h = new MHorizontalLayout(f)
-        .withWidth(40, Unit.PIXELS)
-        .withHeight(40, Unit.PIXELS)
+    String filename = String.format("svg/Chess_%s45.svg", piece.getFileIdentifier());
+
+    HorizontalLayout h = new MHorizontalLayout()
+        .withWidth(50, Unit.PIXELS)
+        .withHeight(50, Unit.PIXELS)
         .withMargin(false)
         .withSpacing(false);
     h.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
-
+    if (piece.getFileIdentifier() != null) {
+      Embedded svg = new Embedded(null, new ThemeResource(filename));
+      //svg.setMimeType("image/svg+xml");
+      h.addComponent(svg);
+    }
     return h;
   }
+
   protected static class BoardState {
     /**
      * Where the pieces are - 0=a1 up to 63=h8.  Pieces are r=wr, etc...

@@ -4,26 +4,26 @@ package com.ssta.ui.component;
  * Created by ssta on 11/27/16.
  */
 public enum Piece {
-  EMPTY(' ', '\u00a0'),
-  BLACK_PAWN('p', 'o'),
-  BLACK_KNIGHT('n', 'm'),
-  BLACK_BISHOP('b', 'v'),
-  BLACK_ROOK('r', 't'),
-  BLACK_QUEEN('q', 'w'),
-  BLACK_KING('k', 'l'),
-  WHITE_PAWN('P', 'p'),
-  WHITE_KNIGHT('N', 'n'),
-  WHITE_BISHOP('B', 'b'),
-  WHITE_ROOK('R', 'r'),
-  WHITE_QUEEN('Q', 'q'),
-  WHITE_KING('K', 'k');
+  EMPTY(' ', null),
+  BLACK_PAWN('p', "pdt"),
+  BLACK_KNIGHT('n', "ndt"),
+  BLACK_BISHOP('b', "bdt"),
+  BLACK_ROOK('r', "rdt"),
+  BLACK_QUEEN('q', "qdt"),
+  BLACK_KING('k', "kdt"),
+  WHITE_PAWN('P', "plt"),
+  WHITE_KNIGHT('N', "nlt"),
+  WHITE_BISHOP('B', "blt"),
+  WHITE_ROOK('R', "rlt"),
+  WHITE_QUEEN('Q', "qlt"),
+  WHITE_KING('K', "klt");
 
   private char piece;
-  private char unicode;
+  private String fileIdentifier;
 
-  private Piece(char piece, char unicode) {
+  private Piece(char piece, String fileIdentifier) {
     this.piece = piece;
-    this.unicode = unicode;
+    this.fileIdentifier = fileIdentifier;
   }
 
   public static Piece find(char piece) {
@@ -39,7 +39,7 @@ public enum Piece {
     return piece;
   }
 
-  public char getUnicode() {
-    return unicode;
+  public String getFileIdentifier() {
+    return fileIdentifier;
   }
 }
